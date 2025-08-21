@@ -22,7 +22,7 @@ const Appointments = () => {
         <div className="hidden sm:grid grid-cols-[0.5fr_2.5fr_1fr_2.5fr_2.5fr_1fr_1fr] py-3 px-6 border-b bg-gray-50 font-medium text-gray-600">
           <p>#</p>
           <p>Patient</p>
-          <p>Age</p>
+          <p>Pet</p>
           <p>Date & Time</p>
           <p>Doctor</p>
           <p>Fees</p>
@@ -51,7 +51,7 @@ const Appointments = () => {
               <p className="font-medium text-gray-700">{item.userData.name}</p>
             </div>
 
-            <p className="max-sm:hidden text-gray-600">{calculateAge(item.userData.dob)}</p>
+            <p className="max-sm:hidden text-gray-600">{item.userData.pet}</p>
 
             {/* Date & Time */}
             <p className="text-gray-600">
