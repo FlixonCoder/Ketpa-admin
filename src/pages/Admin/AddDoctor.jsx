@@ -20,6 +20,7 @@ const AddDoctor = () => {
   const [degree, setDegree] = useState('')
   const [address1, setAddress1] = useState('')
   const [address2, setAddress2] = useState('')
+  const [locationUrl, setLocationURL] = useState('')
   const [loading, setLoading] = useState(false)
 
   const { backendUrl, aToken } = useContext(AdminContext)
@@ -52,7 +53,9 @@ const AddDoctor = () => {
       formData.append(
         'address',
         JSON.stringify({ line1: address1, line2: address2 })
-      )
+      ),
+      formData.append('location', locationUrl)
+
 
       const { data } = await axios.post(
         backendUrl + '/api/admin/add-doctor',
@@ -75,6 +78,7 @@ const AddDoctor = () => {
         setAbout('')
         setFees('')
         setRating('')
+        setLocationURL('')
       } else {
         toast.error(data.message)
       }
@@ -251,6 +255,17 @@ const AddDoctor = () => {
                 required
               />
             </div>
+          </div>
+          <div>
+            <label className="text-sm font-medium">Location URL</label>
+            <input
+              onChange={(e) => setLocationURL(e.target.value)}
+              value={locationUrl}
+              className="border rounded-lg px-3 py-2 w-full focus:ring-2 focus:ring-[#031cfc] outline-none"
+              type="text"
+              placeholder="https://maps.google.com/..."
+              required
+            />
           </div>
         </div>
 
